@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header class="navbar-container">
+        <nav class="navbar">
+            <ul class="navbar-list-container">
+                <li class="navbar-list-item"> <a href="#add-task-form-section"> Add Task Form </a> </li>
+                <li class="navbar-list-item"><a href="#todo-list-section"> To Do List </a></li>
+            </ul>
+            <button id="dark-mode-toggle" class="dark-mode-btn">🌙</button>
+        </nav>
+    </header>
+
+    <main class="container-content">
+        <h2> My To-Do List </h2>
+
+        <section class="task-input-container" id="add-task-form-section">
+            <form id="to-do-form">
+                <div class="input-group">
+                    <label for="to-do-input"> To-Do Task: </label>
+                    <input type="text" id="to-do-input" placeholder="Enter a new task ..." required>
+                </div>
+                <div class="input-group">
+                    <label for="due-date-input"> Due Date: </label>
+                    <input type="date" id="due-date-input" required>
+                </div>
+                <button id="add-button" type="submit"> Add Task </button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section class="task-list-container" id="todo-list-section">
+            <div class="task-filter-container">
+                <label for="task-filter"> Filter Task: </label>
+                <select id="task-filter">
+                    <option value="all"> All </option>
+                    <option value="completed"> Completed </option>
+                    <option value="pending"> Pending </option>
+                </select>
+            </div>
+            <ul id="to-do-list">
+                </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; <span id="current-year"></span> Simple To-Do App. Developed by Efraim Imanuel Parasak, S.T</p>
+            <p class="footer-info">Mini Final Project for Coding Camp By Revou. Version 1.0</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
