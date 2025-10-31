@@ -1,0 +1,250 @@
+/* --------------------
+   1. Global Reset, Variables & Dark Mode
+   -------------------- */
+:root {
+    --primary-color: #3f51b5; /* Biru Indigo */
+    --secondary-color: #ffc107; /* Kuning Amber */
+    --background-color: #f4f7f6;
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --border-color: #e0e0e0;
+    --success-color: #4caf50;
+    --danger-color: #f44336;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html.dark {
+    --primary-color: #7986cb; /* Indigo lebih terang */
+    --secondary-color: #ffca28; /* Kuning lebih terang */
+    --background-color: #121212;
+    --card-background: #1e1e1e;
+    --text-color: #e0e0e0;
+    --border-color: #424242;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --------------------
+   2. Layout & Header/Footer
+   -------------------- */
+.container-content {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.navbar-container {
+    background-color: var(--primary-color);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.navbar {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-list-container {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar-list-item a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.navbar-list-item a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark-mode-btn {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 1px solid white;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.dark-mode-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode-btn:active {
+    transform: translateY(-50%) scale(0.9);
+}
+
+.task-input-container,
+.task-list-container {
+    padding-top: 20px;
+    margin-top: -20px;
+}
+
+h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 2em;
+    border-bottom: 3px solid var(--secondary-color);
+    display: inline-block;
+    padding-bottom: 5px;
+    width: 100%;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 30px 0;
+}
+
+footer {
+    background-color: #333;
+    color: #f4f7f6;
+    padding: 20px 0;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.footer-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer p { margin: 5px 0; }
+.footer-info { color: #bbb; font-size: 0.8em; }
+
+/* --------------------
+   3. Form Styling
+   -------------------- */
+#to-do-form { display: flex; flex-wrap: wrap; gap: 15px; align-items: flex-end; }
+.input-group { flex: 1; min-width: 200px; }
+.input-group label { display: block; margin-bottom: 5px; font-weight: 600; color: var(--text-color); }
+
+#to-do-input, #due-date-input {
+    width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1em; transition: border-color 0.3s;
+    background-color: var(--card-background); color: var(--text-color);
+}
+
+#to-do-input:focus, #due-date-input:focus {
+    border-color: var(--primary-color); outline: none; box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.2);
+}
+
+#add-button {
+    padding: 10px 20px; background-color: var(--primary-color); color: white; border: none; border-radius: 6px; cursor: pointer;
+    font-size: 1em; font-weight: 600; transition: background-color 0.3s, transform 0.1s;
+}
+
+#add-button:hover { background-color: #303f9f; }
+#add-button:active { transform: scale(0.98); }
+
+/* --------------------
+   4. Task Filter Styling
+   -------------------- */
+.task-filter-container { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+#task-filter {
+    padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1em; cursor: pointer;
+    background-color: var(--card-background); color: var(--text-color);
+}
+
+/* --------------------
+   5. To-Do List Styling
+   -------------------- */
+#to-do-list { list-style: none; padding: 0; }
+.list-item {
+    display: flex; align-items: center; justify-content: space-between; padding: 15px; margin-bottom: 10px;
+    background-color: var(--card-background); border: 1px solid var(--border-color); border-radius: 8px;
+    transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+.list-item:hover { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+.placeholder-item { text-align: center; font-style: italic; color: #999; border: 1px dashed var(--border-color); }
+.task-info { flex-grow: 1; margin-right: 15px; display: flex; flex-direction: column; }
+.task-info .task-text { font-weight: 500; font-size: 1.1em; word-wrap: break-word; }
+.task-info .edit-input { width: 100%; font-size: 1.1em; padding: 5px; border: 1px solid var(--primary-color); border-radius: 4px; }
+.task-info .due-date { font-size: 0.85em; color: #888; margin-top: 3px; }
+
+.list-item.completed { background-color: #e8f5e9; opacity: 0.7; }
+html.dark .list-item.completed { background-color: #2e7d32; opacity: 0.6; }
+.list-item.completed .task-text { text-decoration: line-through; color: #666; }
+
+.task-actions { display: flex; gap: 8px; }
+.action-btn {
+    border: none; border-radius: 50%; cursor: pointer; width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center; transition: background-color 0.3s; font-weight: 700; font-size: 1em;
+}
+
+.edit-btn { background-color: var(--secondary-color); color: var(--text-color); }
+.edit-btn:hover { background-color: #ffb300; }
+.check-btn { background-color: var(--success-color); color: white; }
+.check-btn:hover { background-color: #388e3c; }
+.delete-btn { background-color: var(--danger-color); color: white; }
+.delete-btn:hover { background-color: #d32f2f; }
+
+/* --------------------
+   6. Responsiveness
+   -------------------- */
+@media (max-width: 600px) {
+    .container-content { margin: 20px; padding: 20px; }
+    .navbar { flex-direction: column; gap: 10px; }
+    .dark-mode-btn { position: static; transform: none; }
+    #to-do-form { flex-direction: column; align-items: stretch; }
+    #add-button { width: 100%; margin-top: 5px; }
+    .list-item { flex-direction: column; align-items: flex-start; }
+    .task-info { margin-bottom: 10px; width: 100%; }
+    .task-actions { width: 100%; justify-content: flex-end; }
+}
+
+/* --------------------
+   7. Validation & Animation Styling
+   -------------------- */
+.error-input { border-color: var(--danger-color) !important; box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.2) !important; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeOut { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.9); } }
+.list-item.new-item { animation: fadeIn 0.4s ease-out; }
+.list-item.removing { animation: fadeOut 0.3s ease-in forwards; }
